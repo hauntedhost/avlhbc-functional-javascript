@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>playground</title>
+  <script src="underscore.js"></script>
+  <script src="jquery.js"></script>
+
+  <script type="text/javascript">
+    function exists(x) {
+      return !_.isEmpty(x);
+    }
+  </script>
+</head>
+<body>
+
+<script type="text/javascript">
+function cat() {
+  var head = _.first(arguments);
+  if (exists(head)) {
+    return head.concat.apply(head, _.rest(arguments));
+  } else {
+    return [];
+  }
+}
+
+var c = cat([1, 2, 3], [5,5], [99, 98]);
+console.log(c);
+//=> [1, 2, 3, 5, 5, 99, 98]
+
+function cat2() {
+  return [].concat.apply([], arguments);
+}
+
+var c2 = cat2([1, 2, 3], [5,5], [99, 98])
+console.log(c2);
+//=> [1, 2, 3, 5, 5, 99, 98]
+</script>
+
+</body>
+</html>
