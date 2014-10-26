@@ -5,8 +5,9 @@ Notes and code snippets while studying [Functional JavaScript](http://www.amazon
 
 ### Contents:
 - [Preface](#preface)
-- [Chapter 1](#chapter-1)
-- [Chapter 2](#chapter-2)
+- [Chapter 1: Introducing Functional Programming](#chapter-1-introducing-functional-javascript)
+- [Chapter 2: First-Class Functions and Applicative Programming](#chapter-2-first-class-functions-and-applicative-programming)
+- [Chapter 3: Variable Scope and Closures](#chapter-3-variable-scope-and-closures)
 
 # Preface
 
@@ -17,7 +18,7 @@ Notes and code snippets while studying [Functional JavaScript](http://www.amazon
 - favor functions over methods
 
 
-# Chapter 1
+# Chapter 1: Introducing Functional Javascript
 
 ## the case for javascript:
 
@@ -259,7 +260,7 @@ arr['reverse'];
 //=> function reverse() { [native code] }
 ```
 
-# Chapter 2
+# Chapter 2: First-Class Functions and Applicative Programming
 
 ### functions as first-class things
 
@@ -421,6 +422,11 @@ function anyOf() {
 }
 ```
 → [__chapter-2/any-of.js__](/chapter-2/any-of.js)
+
+# Chapter 3: Variable Scope and Closures
+
+## javascript's dynamic scope:
+
 
 ---
 
