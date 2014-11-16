@@ -8,6 +8,8 @@ Notes and code snippets while studying [Functional JavaScript](http://www.amazon
 - [Chapter 1: Introducing Functional Programming](#chapter-1-introducing-functional-javascript)
 - [Chapter 2: First-Class Functions and Applicative Programming](#chapter-2-first-class-functions-and-applicative-programming)
 - [Chapter 3: Variable Scope and Closures](#chapter-3-variable-scope-and-closures)
+- [Chapter 4: Higher-Order Functions](#chapter-4-higher-order-functions)
+- [Chapter 5: Function-Building Functions](#chapter-5-function-building-functions)
 
 # Preface
 
@@ -17,11 +19,9 @@ Notes and code snippets while studying [Functional JavaScript](http://www.amazon
 - no monkey patching
 - favor functions over methods
 
-
 # Chapter 1: Introducing Functional Javascript
 
 ## the case for javascript:
-
 
 ### passing functions
 
@@ -171,7 +171,7 @@ cat.meow();
 
 at this point author seems to assume familiarity with underscore, using ``_.reduce``, ``_.map`` and ``_.rest`` in example code without explanation. :/
 
-in any case, tinkering with the implementation of ``lameCSV``:  
+in any case, tinkering with the implementation of ``lameCSV``:
 ```javascript
 function lameCSV(str) {
   var rows = str.split('\n');
@@ -308,13 +308,13 @@ logger('is this thing on?');
 
 > __[!]__ ___chaining ftw!___
 
-> [__Chaining__](http://underscorejs.org/#chaining)  
+> [__Chaining__](http://underscorejs.org/#chaining)
 You can use Underscore in either an object-oriented or a functional style, depending on your preference. The following two lines of code are identical ways to double a list of numbers.
 ```javascript
 _.map([1, 2, 3], function(n){ return n * 2; });
 _([1, 2, 3]).map(function(n){ return n * 2; });
 ```
-> [__chain_.chain(obj)__](http://underscorejs.org/#chain)  
+> [__chain_.chain(obj)__](http://underscorejs.org/#chain)
 Returns a wrapped object. Calling methods on this object will continue to return wrapped objects until value is called.
 
 my implemention of lyricSegment:
@@ -455,6 +455,39 @@ target.sayHello.call(wat, 'sean');
 → [__chapter-3/bind-all.js__](/chapter-3/bind-all.js)
 
 > __[!]__ _.bindAll ftw.
+
+# Chapter 5: Function-Building Functions
+
+```javascript
+function curry2(fun) {
+  // actual function returned
+  return function(secondArg) {
+    // second function returned when first function, above, is called
+    return function(firstArg) {
+      // return application of both arguments to original function passed
+      return fun(firstArg, secondArg);
+    }
+  }
+}
+
+//                        ---- secondArg
+//                        |
+var div = function(num, divisor) { return num / divisor; }
+//                 |
+//                 ----firstArg
+
+//                      --- secondArg (divisor)
+//                      |
+var div10 = curry2(div)(10);
+//                  |
+//                  ---- fun
+
+//                ------ firstArg (num)
+//                |
+console.log(div10(50));
+//=> 5
+```
+→ [__chapter-5/curry.js__](/chapter-5/curry.js)
 
 ---
 
