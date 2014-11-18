@@ -5,6 +5,7 @@
   <script src="underscore.js"></script>
   <script src="jquery.js"></script>
   <script src="iife.js"></script>
+  <script src="../chapter-6/fibs.js"></script>
 
   <script type="text/javascript">
     function exists(x) {
@@ -25,7 +26,7 @@ function cat() {
 }
 
 var c = cat([1, 2, 3], [5,5], [99, 98]);
-console.log(c);
+// console.log(c);
 //=> [1, 2, 3, 5, 5, 99, 98]
 
 function cat2() {
@@ -33,11 +34,11 @@ function cat2() {
 }
 
 var c2 = cat2([1, 2, 3], [5,5], [99, 98])
-console.log(c2);
+// console.log(c2);
 //=> [1, 2, 3, 5, 5, 99, 98]
 
-_.reduce([1,2,3,4,5], function(accum, item) { 
-  console.log('accum', accum);
+_.reduce([1,2,3,4,5], function(accum, item) {
+  // console.log('accum', accum);
   return item;
 });
 </script>
